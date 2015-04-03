@@ -1,0 +1,9 @@
+<div data-hook="new_nutrition_attrs" class="row">
+
+  <div class="alpha sixteen columns">
+    <%= f.label :name, Spree.t(:nutrition_name)%>
+    <%= f.text_field :name, name: "nutrition[name]", :class => 'fullwidth title'%>
+    <%= f.error_message_on :name %>
+  </div>
+
+<div class="clear"></div>

@@ -1,0 +1,9 @@
+<div data-hook="new_what_you_need_attrs" class="row">
+
+  <div class="alpha sixteen columns">
+    <%= f.label :name, Spree.t(:what_you_need_name)%>
+    <%= f.text_field :name, name: "what_you_need[name]", :class => 'fullwidth title'%>
+    <%= f.error_message_on :name %>
+  </div>
+
+<div class="clear"></div>

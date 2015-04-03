@@ -1,0 +1,7 @@
+<div data-hook="new_ingredient_attrs" class="row">
+  <div class="alpha twelve columns">
+    <%= f.label :name, Spree.t(:ingredient_name)%>
+    <%= f.text_field :name, name: "ingredient[name]", :class => 'fullwidth title'%>
+    <%= f.error_message_on :name %>
+  </div>
+<div class="clear"></div>

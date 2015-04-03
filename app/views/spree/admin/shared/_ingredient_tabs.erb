@@ -1,0 +1,20 @@
+<% content_for :page_title do %>
+  <%= Spree.t(:editing_ingredient) %> &ldquo;<%= @ingredient.name %>&rdquo;
+<% end %>
+
+<% content_for :sidebar_title do %>
+  <span class="sku"><%= @ingredient.name %></span>
+<% end %>
+
+<% content_for :sidebar do %>
+  <nav class="menu">
+    <ul data-hook="admin_box_tabs">
+      <%= content_tag :li, :class => ('active' if current == 'Ingredient Details') do %>
+        <%= link_to_with_icon 'edit', Spree.t(:ingredient_details), edit_admin_ingredient_url(@ingredient) %>
+      <% end if can?(:admin, Dish::Ingredient) %>
+      <%= content_tag :li, :class => ('active' if current == 'Images') do %>
+        <%= link_to_with_icon 'picture-o', Spree.t(:images), admin_ingredient_ingredientimages_url(@ingredient) %>
+      <% end if can?(:admin, Dish::Ingredient) %>
+    </ul>
+  </nav>
+<% end %>

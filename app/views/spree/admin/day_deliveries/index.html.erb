@@ -1,0 +1,11 @@
+<% content_for :page_title do %>
+  <%= Spree.t(:day_deliveries) %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <li id="new_day_delivery_link">
+    <%= button_link_to Spree.t(:new_day_delivery), new_admin_day_delivery_url, { :remote => true, :icon => 'plus', :id => 'new_day_delivery_link' } %>
+  </li>
+<% end %>
+
+<%= render :partial => 'spree/admin/shared/product_sub_menu' %>

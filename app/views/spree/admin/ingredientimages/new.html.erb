@@ -1,0 +1,15 @@
+<%= form_for [@ingredient, @ingredientimage], url: admin_ingredient_ingredientimages_url(@ingredient), method: 'POST', :html => { :multipart => true,:id => 'new_ingredientimage', :class => 'new_ingredientimage' } do |f| %>
+  <fieldset data-hook="new_image">
+    <legend align="center"><%= Spree.t(:new_image) %></legend>
+
+      <%= render :partial => 'form', :locals => { :f => f } %>
+    
+      <div class="form-buttons filter-actions actions" data-hook="buttons">
+        <%= button Spree.t('actions.create'), 'refresh' %>
+        <span class="or"><%= Spree.t(:or) %></span>
+        <%= link_to_with_icon 'remove', Spree.t('actions.cancel'), admin_ingredient_ingredientimages_url(@ingredient), :id => 'cancel_link', :class => 'button' %>
+      </div>
+  </fieldset>
+<% end %>
+
+<%= javascript_include_tag 'spree/backend/images/new.js' %>

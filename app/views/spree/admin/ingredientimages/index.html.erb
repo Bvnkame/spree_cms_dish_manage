@@ -1,0 +1,50 @@
+<%= render :partial => 'spree/admin/shared/product_sub_menu' %>
+
+<%= render :partial => 'spree/admin/shared/ingredient_tabs', :locals => {:current => 'Images'}%>
+
+<!--Button add new image-->
+<% content_for :page_actions do %>
+  <% if !@ingredient.images.any? %>
+    <li><%= link_to_with_icon('plus', Spree.t(:new_image), new_admin_ingredient_ingredientimage_url(@ingredient), :id => 'new_image_link', :class => 'button') %></li>
+  <% else %>
+    <li></li>
+  <% end %>
+<% end %>
+
+
+<div id="images" data-hook></div>
+
+<!--Display images-->
+<% unless @ingredient.images.any? %>
+  <div class="no-objects-found">
+    <%= Spree.t(:no_images_found) %>.
+  </div>
+<% else %>
+  <table data-hook="images_table"%>
+    <thead>
+      <tr data-hook="images_header">
+        <th colspan="2"><%= Spree.t(:thumbnail) %></th>
+        <th><%= Spree.t(:alt_text) %></th>
+        <th class="actions"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% (@ingredient.images).each do |image| %>
+        <tr id="<%= spree_dom_id image %>" data-hook="images_row" class="<%= cycle('odd', 'even')%>">
+          <td class="no-border">
+          </td>
+          <td class="align-center">
+            <%= link_to image_tag(image.attachment.url(:mini)), image.attachment.url(:normal) %>
+          </td>
+
+          <td><%= image.alt %></td>
+          <td class="actions">
+            <%= link_to_with_icon 'edit', Spree.t(:edit), edit_admin_ingredient_ingredientimage_url(@ingredient, image), :no_text => true, :data => {:action => 'edit'} %>
+            <%= link_to_delete image, { :url => admin_ingredient_ingredientimage_url(@ingredient, image), :no_text => true } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

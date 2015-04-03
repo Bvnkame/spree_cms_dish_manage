@@ -1,0 +1,9 @@
+<div data-hook="new_dish_type_attrs" class="row">
+
+  <div class="alpha sixteen columns">
+    <%= f.label :name, Spree.t(:dish_type_name)%>
+    <%= f.text_field :name, name: "dish_type[name]", :class => 'fullwidth title'%>
+    <%= f.error_message_on :name %>
+  </div>
+
+<div class="clear"></div>

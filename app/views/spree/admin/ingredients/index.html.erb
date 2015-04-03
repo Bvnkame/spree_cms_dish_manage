@@ -1,0 +1,52 @@
+<% content_for :page_title do %>
+  <%= Spree.t(:listing_ingredients) %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <li id="new_ingredient_link">
+    <%= button_link_to Spree.t(:new_ingredient), new_admin_ingredient_url, { :remote => true, :icon => 'plus', :id => 'new_ingredient_link' } %>
+  </li>
+<% end %>
+
+<%= render :partial => 'spree/admin/shared/product_sub_menu' %>
+
+<div id="new_ingredient_wrapper" data-hook></div>
+
+<% if @ingredients.any? %>
+  <table>
+    <colgroup>
+      <col style="width: 30%;" />
+      <col style="width: 60%;" />
+      <col style="width: 10%;" />
+    </colgroup>
+    <thead>
+      <tr>
+        <th><%=Spree.t(:image)%></th>
+        <th><%=Spree.t(:name)%></th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @ingredients.each do |ingredient| %>
+      <tr>
+        <% if ingredient.images.any? %>
+          <td class="align-center"><%= image_tag ingredient.images.first.attachment.url(:mini) %></td>
+        <% else %>
+          <td class="align-center"></td>
+        <% end %>
+        <td class="align-center">
+          <%= link_to ingredient.name, admin_ingredient_url(ingredient) %>
+        </td>
+        <td class="actions" data-hook="admin_ingredients_index_row_actions">
+          <%= link_to_edit ingredient, :no_text => true, :class => 'edit' if can?(:edit, ingredient)%>
+          &nbsp;
+          <%= link_to_delete ingredient, :no_text => true if can?(:delete, ingredient)%>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <div class="no-objects-found">
+    <%= Spree.t(:no_experts_found) %>.
+  </div>
+<% end %>

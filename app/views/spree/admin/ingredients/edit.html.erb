@@ -1,0 +1,24 @@
+<% content_for :page_actions do %>
+  <li><%= button_link_to Spree.t(:back_to_ingredients_list), admin_ingredients_url, :icon => 'arrow-left' %></li>
+  <% if can?(:create, Dish::Ingredient) %>
+    <li id="new_ingredient_link">
+      <%= button_link_to Spree.t(:new_ingredient), new_admin_ingredient_url, {:icon => 'plus', :id => 'admin_new_ingredient' } %>
+    </li>
+  <% end %>
+<% end %>
+
+<%= render :partial => 'spree/admin/shared/product_sub_menu'%>
+
+<%= render :partial => 'spree/admin/shared/ingredient_tabs', :locals => {:current => 'Ingredient Details'}%>
+
+<%= form_for @ingredient, method: :put, :url => admin_ingredient_url(@ingredient), :html => {:id => "edit_ingredient", :multipart => true} do |f| %>
+  <fieldset data-hook="edit-ingredient">
+    <%= render :partial => "form", :locals => {:f => f} %>
+
+    <div class="form-buttons filter-actions actions" data-hook="buttons">
+        <%= button Spree.t('actions.update'), 'ok' %>
+        <span class="or"><%= Spree.t(:or) %></span>
+        <%= link_to_with_icon 'remove', Spree.t('actions.cancel'), admin_ingredient_url, :class => 'button' %>
+    </div>
+  </fieldset>
+<% end %>

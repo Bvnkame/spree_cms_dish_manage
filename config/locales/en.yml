@@ -3,3 +3,12 @@
 
 en:
   hello: "Hello world"
+
+  spree:
+    new_product: New Dish
+    back_to_products_list: Back To Dishes List
+    editing_product: Editing Dish
+    product_details: Dish Details
+    admin:
+      tab:
+        products: Dishes

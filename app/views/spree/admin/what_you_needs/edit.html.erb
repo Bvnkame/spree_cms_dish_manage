@@ -1,0 +1,26 @@
+<% content_for :page_title do %>
+  <%= Spree.t(:editing_what_you_need) %> &ldquo;<%= @what_you_need.name %>&rdquo;
+<% end %>
+
+<% content_for :page_actions do %>
+  <li><%= button_link_to Spree.t(:back_to_what_you_needs_list), admin_what_you_needs_url, :icon => 'arrow-left' %></li>
+  <% if can?(:create, Dish::WhatNeed) %>
+    <li id="new_what_you_need_link">
+      <%= button_link_to Spree.t(:new_what_you_need), new_admin_what_you_need_url, {:icon => 'plus', :id => 'admin_new_what_you_need' } %>
+    </li>
+  <% end %>
+<% end %>
+
+<%= render :partial => 'spree/admin/shared/product_sub_menu'%>
+
+<%= form_for @what_you_need, method: :put, :url => admin_what_you_need_url(@what_you_need), :html => {:id => "edit_what_you_need", :multipart => true} do |f| %>
+  <fieldset data-hook="edit-what_you_need">
+    <%= render :partial => "form", :locals => {:f => f} %>
+
+    <div class="form-buttons filter-actions actions" data-hook="buttons">
+        <%= button Spree.t('actions.update'), 'ok' %>
+        <span class="or"><%= Spree.t(:or) %></span>
+        <%= link_to_with_icon 'remove', Spree.t('actions.cancel'), admin_what_you_need_url, :class => 'button' %>
+    </div>
+  </fieldset>
+<% end %>

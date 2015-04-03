@@ -1,0 +1,26 @@
+<% content_for :page_title do %>
+  <%= Spree.t(:editing_nutrition) %> &ldquo;<%= @nutrition.name %>&rdquo;
+<% end %>
+
+<% content_for :page_actions do %>
+  <li><%= button_link_to Spree.t(:back_to_nutritions_list), admin_nutritions_url, :icon => 'arrow-left' %></li>
+  <% if can?(:create, Dish::Nutrition) %>
+    <li id="new_nutrition_link">
+      <%= button_link_to Spree.t(:new_nutrition), new_admin_nutrition_url, {:icon => 'plus', :id => 'admin_new_nutrition' } %>
+    </li>
+  <% end %>
+<% end %>
+
+<%= render :partial => 'spree/admin/shared/product_sub_menu'%>
+
+<%= form_for @nutrition, method: :put, :url => admin_nutrition_url(@nutrition), :html => {:id => "edit_nutrition", :multipart => true} do |f| %>
+  <fieldset data-hook="edit-nutrition">
+    <%= render :partial => "form", :locals => {:f => f} %>
+
+    <div class="form-buttons filter-actions actions" data-hook="buttons">
+        <%= button Spree.t('actions.update'), 'ok' %>
+        <span class="or"><%= Spree.t(:or) %></span>
+        <%= link_to_with_icon 'remove', Spree.t('actions.cancel'), admin_nutrition_url, :class => 'button' %>
+    </div>
+  </fieldset>
+<% end %>

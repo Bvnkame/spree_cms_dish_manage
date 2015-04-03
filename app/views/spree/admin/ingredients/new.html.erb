@@ -1,0 +1,11 @@
+<%= render :partial => 'spree/admin/shared/product_sub_menu' %>
+
+<%= form_for @ingredient, url: admin_ingredients_url(@ingredient), method: 'POST', html: { id: "new_ingredient", multipart: true } do |f|%>
+  <fieldset data-hook="new_ingredient">
+    <legend align="center"><%= Spree.t(:new_ingredient) %></legend>
+    <%= render :partial => 'form', :locals => { :f => f } %>
+
+    <%= render :partial => 'spree/admin/shared/new_ingredient_links' %>
+
+  </fieldset>
+<% end %>

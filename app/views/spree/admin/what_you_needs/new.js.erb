@@ -1,0 +1,7 @@
+$("#new_what_you_need_wrapper").html('<%= escape_javascript(render :template => "spree/admin/what_you_needs/new", :formats => [:html], :handlers => [:erb]) %>');
+handle_date_picker_fields();
+<% unless Rails.env.test? %>
+  $('.select2').select2();
+<% end %>
+$("#table-filter").hide();
+$("#admin_what_you_need_type").parent().hide();

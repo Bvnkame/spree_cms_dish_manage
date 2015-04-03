@@ -1,0 +1,44 @@
+<% content_for :page_title do %>
+  <%= Spree.t(:listing_what_you_needs) %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <li id="new_what_need_link">
+    <%= button_link_to Spree.t(:new_what_need), new_admin_what_you_need_url, { :remote => true, :icon => 'plus', :id => 'new_what_you_need_link' } %>
+  </li>
+<% end %>
+
+<%= render :partial => 'spree/admin/shared/product_sub_menu' %>
+
+<div id="new_what_you_need_wrapper" data-hook></div>
+
+<% if @what_you_needs.any? %>
+  <table class="index responsive" id="listing_orders" data-hook>
+    <colgroup>
+      <col style="width: 90%;" />
+      <col style="width: 10%;" />
+    </colgroup>
+    <thead>
+      <tr>
+        <th><%= Spree.t(:name) %></th>
+      </tr>
+      </thead>
+    <tbody>
+      <% @what_you_needs.each do |what_you_need| %>
+        <tr data-hook="admin_what_you_needs_index_rows">
+          <td class="align-center"><%= what_you_need.name %></td>
+          <td class="actions" data-hook="admin_what_you_needs_index_row_actions">
+            <%= link_to_edit what_you_need, :no_text => true, :class => 'edit' if can?(:edit, what_you_need) %>
+            &nbsp;
+            <%= link_to_delete what_you_need, :no_text => true if can?(:delete, what_you_need) %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  <table>
+<% else %>
+  <div class="alpha twelve columns no-objects-found">
+    <%= Spree.t(:no_resource_found, resource: I18n.t(:other, scope: 'activerecord.models.spree/order')) %>,
+    <%= link_to Spree.t(:add_one), spree.new_admin_what_you_need_path %>!
+  </div>
+<% end %>
