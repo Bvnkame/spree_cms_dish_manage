@@ -4,7 +4,7 @@
 
 <% content_for :page_actions do %>
   <li><%= button_link_to Spree.t(:back_to_what_you_needs_list), admin_what_you_needs_url, :icon => 'arrow-left' %></li>
-  <% if can?(:create, Dish::WhatNeed) %>
+  <% if can?(:create, Dish::Whatneed) %>
     <li id="new_what_you_need_link">
       <%= button_link_to Spree.t(:new_what_you_need), new_admin_what_you_need_url, {:icon => 'plus', :id => 'admin_new_what_you_need' } %>
     </li>
