@@ -1,0 +1,96 @@
+<div data-hook="admin_product_form_fields">
+
+  <div class="left eight columns alpha" data-hook="admin_product_form_left">
+    <div data-hook="admin_product_form_name">
+      <%= f.field_container :name do %>
+        <%= f.label :name, raw(Spree.t(:name) + content_tag(:span, ' *', :class => 'required')) %>
+        <%= f.text_field :name, :class => 'fullwidth title', :required => true %>
+        <%= f.error_message_on :name %>
+      <% end %>
+    </div>
+
+    <div data-hook="admin_product_form_story">
+      <%= f.field_container :story do %>
+        <%= f.label :story, Spree.t(:story) %>
+        <%= f.text_area :story, {:rows => 10, :class => 'fullwidth'} %>
+        <%= f.error_message_on :story %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="right four columns omega" data-hook="admin_product_form_right">
+
+    <div data-hook="admin_product_form_price">
+    <%= f.field_container :dish_price do %>
+      <%= f.label :dish_price, raw(Spree.t(:dish_price) + content_tag(:span, ' *', :class => "required")) %>
+      <%= f.text_field :dish_price, :value => number_to_currency(@product.dish_price, :unit => ''), :required => true %>
+      <%= f.error_message_on :dish_price %>
+    <% end %>
+    </div>
+
+    <div class="clear"></div>
+
+    <div data-hook="admin_product_form_available_on">
+      <%= f.field_container :available_on do %>
+        <%= f.label :available_on, Spree.t(:available_on) %>
+        <%= f.error_message_on :available_on %>
+        <%= f.text_field :available_on, :value => datepicker_field_value(@product.available_on), :class => 'datepicker' %>
+      <% end %>
+    </div>
+
+    <div data-hook="admin_product_form_promotionable">
+      <%= f.field_container :promotionable do %>
+        <%= f.label :promotionable do %>
+          <%= f.check_box :promotionable %> <%= Spree.t(:promotionable) %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div data-hook="admin_product_form_dish_types">
+      <%= f.field_container :dish_type do %>
+        <%= f.label :dish_type_id, Spree.t(:dish_types) %>
+        <%= f.collection_select(:dish_type_id, @dish_types, :id, :name, { :include_blank => false }, { :class => 'select2' }) %>
+        <%= f.error_message_on :dish_type %>
+      <% end %>
+    </div>
+
+  </div>
+
+  <div class="twelve columns alpha omega">
+
+    <div data-hook="admin_product_form_ingredients">
+      <%= f.field_container :ingredients do %>
+        <%= f.label :ingredient_ids, Spree.t(:ingredients) %>
+        <%= f.hidden_field :ingredient_ids, :value => @product.ingredient_ids.join(',') %>
+      <% end %>
+    </div>
+
+    <div data-hook="admin_product_form_what_you_needs">
+      <%= f.field_container :whatneeds do %>
+        <%= f.label :whatneed_ids, Spree.t(:what_you_needs) %>
+        <%= f.hidden_field :whatneed_ids, :value => @product.whatneed_ids.join(',') %>
+      <% end %>
+    </div>
+
+    <div data-hook="admin_product_form_nutritions">
+      <%= f.field_container :nutritions do %>
+        <%= f.label :nutrition_ids, Spree.t(:nutritions) %>
+        <%= f.hidden_field :nutrition_ids, :value => @product.nutrition_ids.join(',') %>
+      <% end %>
+    </div>
+
+  </div>
+
+  <div class="clear"></div>
+
+  <div data-hook="admin_product_form_additional_fields"></div>
+
+  <div class="clear"></div>
+
+</div>
+
+<% unless Rails.env.test? %>
+  <script>
+  $('.select2-container').css({width: '20em'})
+  </script>
+<% end %>

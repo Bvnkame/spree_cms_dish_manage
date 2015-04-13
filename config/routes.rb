@@ -8,6 +8,14 @@ Spree::Core::Engine.routes.draw do
       resources :ingredientimages
     end
 
+    resources :products do
+
+      resource :product_expert
+
+      resources :product_nutritions
+
+    end
+
     resources :what_you_needs
 
     resources :nutritions

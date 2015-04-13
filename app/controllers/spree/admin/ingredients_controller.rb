@@ -10,9 +10,6 @@ module Spree
         redirect_to action: :edit
       end
 
-      def load_data
-      end
-
       def location_after_save
         edit_admin_ingredient_url(@ingredient)
       end

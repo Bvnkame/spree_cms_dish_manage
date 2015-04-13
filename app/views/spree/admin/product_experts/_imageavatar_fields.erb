@@ -1,0 +1,20 @@
+<div data-hook="admin_image_form_fields" id="<%= dom_id(f.object) %>">
+  <div data-hook="thumbnail" class="field alpha four columns align-center">
+    <%= f.label Spree.t(:thumbnail) %><br>
+    <%= image_tag @expert.avatar.attachment.url(:normal) %>
+  </div>
+  <div data-hook="file" class="field four columns">
+    <%= f.label :attachment, Spree.t(:filename) %><br>
+    <%= f.file_field :attachment, name: "expert[avatar_attributes][attachment]", accept: 'image/png,image/gif,image/jpeg' %>
+  </div>
+  <div data-hook="alt_text" class="field omega four columns">
+    <%= f.label :alt, Spree.t(:alt_text) %><br>
+    <%= f.text_area :alt, name: "expert[avatar_attributes][alt]", rows: 4, class: 'fullwidth' %>
+  </div>
+  <div data-hook="expert_id" class="field">
+    <%= f.hidden_field :viewable_id, name: "expert[avatar_attributes][viewable_id]", :value => @expert.id %><br>
+    <%= f.hidden_field :id, name: "expert[avatar_attributes][id]", :value => @expert.avatar.try(:id) %><br>
+  </div>
+</div>
+
+<div class="clear"></div>

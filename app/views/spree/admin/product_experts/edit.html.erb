@@ -1,0 +1,45 @@
+<%= render :partial => 'spree/admin/shared/product_sub_menu' %>
+
+<%= render :partial => 'spree/admin/shared/product_tabs', :locals => { :current => 'Experts' } %>
+
+<%= form_for @expert, :url => { :action => :update }, :html => {:method => :put, :id => "edit_expert", :multipart => true} do |f| %>
+
+  <fieldset data-hook="edit-expert">
+    <legend><%= Spree.t(:article) %></legend>
+    <div data-hook="new_expert_attrs" class="row">
+    <div class="alpha six columns">
+      <%= f.label :name, Spree.t(:expert_name)%>
+      <%= f.text_field :name, name: "expert[name]", :class => 'fullwidth title'%>
+    </div>
+
+    <div class="omega six columns">
+      <%= f.label :title, Spree.t(:title)%>
+      <%= f.text_field :title, name: "expert[title]", :class => 'fullwidth title'%>
+    </div>
+
+    <div class="alpha twelve columns">
+      <%= f.label :comment, Spree.t(:comment)%>
+      <%= f.text_area :comment, name: "expert[comment]", :class => 'fullwidth title', :rows => "10"%>
+    </div>
+
+    <div class="clear"></div>
+
+    <%= f.fields_for :avatar, :include_id => false, :input_html => { :class => "update_image"} do |ff| %>
+      <fieldset data-hook="edit-avatar">
+        <legend><%= Spree.t(:avatar) %></legend>
+        <%= render "imageavatar_fields", :f => ff %>
+      </fieldset>
+    <% end %>
+
+    <div class="clear"></div>
+
+    <div class="form-buttons filter-actions actions" data-hook="buttons">
+        <%= button Spree.t('actions.update'), 'ok' %>
+        <span class="or"><%= Spree.t(:or) %></span>
+        <%= link_to_with_icon 'remove', Spree.t('actions.cancel'), admin_product_product_expert_url, :class => 'button' %>
+    </div>
+
+    <div class="clear"></div>
+
+  </fieldset>
+<% end %>

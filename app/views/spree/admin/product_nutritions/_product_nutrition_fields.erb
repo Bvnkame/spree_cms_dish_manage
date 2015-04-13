@@ -1,0 +1,17 @@
+<tr class="product_nutrition fields" id="<%= dom_id(f.object) %>" data-hook="product_nutrition">
+
+  <td class='nutrition_name'>
+    <%= f.text_field :nutrition_name, :readonly => true%>
+  </td>
+  <td class='value'>
+    <%= f.text_field :quantity, type: "number"%>
+  </td>
+  <td class='value'>
+    <%= f.collection_select(:unit, @units, :to_s, :to_s, { :include_blank => false }, { :class => 'select2 fullwidth', :required => true}) %>
+  </td>
+  <td class="actions">
+    <% if f.object.persisted? %>
+      <%= link_to_delete f.object, no_text: true %>
+    <% end %>
+  </td>
+</tr>

@@ -9,6 +9,19 @@ en:
     back_to_products_list: Back To Dishes List
     editing_product: Editing Dish
     product_details: Dish Details
+
+    dish_type: Dish type
+    story: Story
+
+    what_you_needs: What you needs
+
+    dish_price: Price
+    nutritions: Nutritions
+
+    ingredient_placeholder: Choose ingredients
+    nutrition_placeholder: Choose nutritions
+
+    master_price: Price
     admin:
       tab:
         products: Dishes

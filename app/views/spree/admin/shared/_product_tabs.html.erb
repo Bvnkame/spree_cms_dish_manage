@@ -1,0 +1,27 @@
+<% content_for :page_title do %>
+  <%= Spree.t(:editing_product) %> &ldquo;<%= @product.name %>&rdquo;
+<% end %>
+
+<% content_for :sidebar_title do %>
+  <span class="sku"><%= Spree.t("Menu") %></span>
+<% end %>
+
+<% content_for :sidebar do %>
+  <nav class="menu">
+    <ul data-hook='admin_product_tabs'>
+      <%= content_tag :li, :class => ('active' if current == 'Product Details') do %>
+        <%= link_to_with_icon 'edit', Spree.t(:product_details), edit_admin_product_url(@product) %>
+      <% end if can?(:admin, Spree::Product) %>
+      <%= content_tag :li, :class => ('active' if current == 'Images') do %>
+        <%= link_to_with_icon 'picture-o', Spree.t(:images), admin_product_images_url(@product) %>
+      <% end if can?(:admin, Spree::Image) %>
+      <%= content_tag :li, :class => ('active' if current == 'Experts') do %>
+        <%= link_to_with_icon 'picture-o', Spree.t(:experts), admin_product_product_expert_url(@product) %>
+      <% end if can?(:expert, Bm::Expert) %>
+      <%= content_tag :li, :class => ('active' if current == 'Nutritions') do %>
+        <%= link_to_with_icon 'picture-o', Spree.t(:nutritions), admin_product_product_nutritions_url(@product) %>
+      <% end if can?(:admin, Dish::Nutrition) %>
+    </ul>
+  </nav>
+
+<% end %>

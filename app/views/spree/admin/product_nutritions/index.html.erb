@@ -1,0 +1,56 @@
+<%= render :partial => 'spree/admin/shared/product_sub_menu' %>
+
+<%= render :partial => 'spree/admin/shared/product_tabs', :locals => {:current => 'Nutritions'} %>
+
+<%= render 'spree/shared/error_messages', :target => @product %>
+
+<%= form_for @product, :url => admin_product_url(@product), :method => :put do |f| %>
+  <fieldset class="no-border-top">
+
+    <div class="add_product_nutritions" data-hook="add_product_nutritions"></div>
+
+    <table>
+      <colgroup>
+        <col style="width: 40%;" />
+        <col style="width: 40%;" />
+        <col style="width: 10%;" />
+        <col style="width: 10%;" />
+      </colgroup>
+      <thead>
+        <tr>
+          <th><%=Spree.t(:name)%></th>
+          <th><%=Spree.t(:quantity)%></th>
+          <th><%=Spree.t(:unit)%></th>
+          <th class="actions"></th>
+        </tr>
+      </thead>
+
+      <tbody id="product_nutritions" data-hook>
+        <%= f.fields_for :product_nutritions do |pp_form| %>
+          <%= render 'product_nutrition_fields', :f => pp_form %>
+        <% end %>
+      </tbody>
+
+    </table>
+
+  <div class="form-buttons filter-actions actions" data-hook="buttons">
+    <%= button Spree.t('actions.update'), 'refresh' %>
+    <span class="or"><%= Spree.t(:or) %></span>
+    <%= link_to Spree.t('actions.cancel'), admin_product_url(@product), :id => 'cancel_link', :class => 'button remove' %>
+  </div>
+
+  <%= hidden_field_tag 'clear_product_properties', 'true' %>
+  </fieldset>
+
+<% end %>
+
+<%= javascript_tag do -%>
+  var nutritions = <%= raw(@nutritions.to_json) %>;
+  $('#product_nutritions').on('keydown', 'input.autocomplete', function() {
+    already_auto_completed = $(this).is('ac_input');
+    if (!already_auto_completed) {
+      $(this).autocomplete({source: nutritions});
+      $(this).focus();
+    }
+  });
+<% end -%>
