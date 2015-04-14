@@ -4,8 +4,8 @@ module Spree
       helper 'spree/products'
 
       before_action :load_data, except: :index
-      create.before :create_before
-      update.before :update_before
+      # create.before :create_before
+      # update.before :update_before
       helper_method :clone_object_url
 
       def show
@@ -95,7 +95,7 @@ module Spree
         #@ingredients = Dish::Ingredient.order(:name)
         #@whatneeds = Dish::Whatneed.order(:name)
         #@nutritions = Dish::Nutrition.order(:name)
-        @shipping_categories = ShippingCategory.order(:name)
+        #@shipping_categories = ShippingCategory.order(:name)
         @dish_types = Dish::DishType.order(:name)
       end
 
@@ -111,7 +111,7 @@ module Spree
         return @collection if @collection.present?
         params[:q] ||= {}
         params[:q][:deleted_at_null] ||= "1"
-
+        
         params[:q][:s] ||= "name asc"
         @collection = super
         if params[:q].delete(:deleted_at_null) == '0'
@@ -121,28 +121,28 @@ module Spree
         @search = @collection.ransack(params[:q])
         @collection = @search.result.
               distinct_by_product_ids(params[:q][:s]).
-              includes(product_includes).
+              #includes(product_includes).
               page(params[:page]).
               per(params[:per_page] || Spree::Config[:admin_products_per_page])
 
         @collection
       end
 
-      def create_before
-        return if params[:product][:prototype_id].blank?
-        @prototype = Spree::Prototype.find(params[:product][:prototype_id])
-      end
+      # def create_before
+      #   return if params[:product][:prototype_id].blank?
+      #   @prototype = Spree::Prototype.find(params[:product][:prototype_id])
+      # end
 
-      def update_before
-        # note: we only reset the product properties if we're receiving a post
-        #       from the form on that tab
-        return unless params[:clear_product_properties]
-        params[:product] ||= {}
-      end
+      # def update_before
+      #   # note: we only reset the product properties if we're receiving a post
+      #   #       from the form on that tab
+      #   return unless params[:clear_product_properties]
+      #   params[:product] ||= {}
+      # end
 
-      def product_includes
-        [{ variants: [:images], master: [:images, :default_price] }]
-      end
+      # def product_includes
+      #   [{ variants: [:images], master: [:images, :default_price] }]
+      # end
 
       def clone_object_url(resource)
         clone_admin_product_url resource
@@ -150,9 +150,9 @@ module Spree
 
       private
 
-      def variant_stock_includes
-        [:images, stock_items: :stock_location, option_values: :option_type]
-      end
+      # def variant_stock_includes
+      #   [:images, stock_items: :stock_location, option_values: :option_type]
+      # end
     end
   end
 end

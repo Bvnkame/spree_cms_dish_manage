@@ -24,26 +24,10 @@
       </div>
 
       <div data-hook="new_product_price" class="four columns">
-        <%= f.field_container :price do %>
-          <%= f.label :price, Spree.t(:master_price) %> <span class="required">*</span><br />
-          <%= f.text_field :price, :value => number_to_currency(@product.price, :unit => ''), :class => 'fullwidth', :required => true %>
-          <%= f.error_message_on :price %>
-        <% end %>
-      </div>
-
-      <div data-hook="new_product_available_on" class="four columns">
-        <%= f.field_container :available_on do %>
-          <%= f.label :available_on, Spree.t(:available_on) %>
-          <%= f.error_message_on :available_on %>
-          <%= f.text_field :available_on, :class => 'datepicker fullwidth' %>
-        <% end %>
-      </div>
-
-      <div data-hook="new_product_shipping_category" class="omega four columns">
-        <%= f.field_container :shipping_category do %>
-          <%= f.label :shipping_category_id, Spree.t(:shipping_categories) %><span class="required">*</span><br />
-          <%= f.collection_select(:shipping_category_id, @shipping_categories, :id, :name, { :include_blank => Spree.t('match_choices.none') }, { :class => 'select2 fullwidth', :required => true }) %>
-          <%= f.error_message_on :shipping_category_id %>
+        <%= f.field_container :dish_price do %>
+          <%= f.label :dish_price, Spree.t(:master_price) %> <span class="required">*</span><br />
+          <%= f.text_field :dish_price, :value => number_to_currency(@product.dish_price, :unit => ''), :class => 'fullwidth', :required => true %>
+          <%= f.error_message_on :dish_price %>
         <% end %>
       </div>
 
