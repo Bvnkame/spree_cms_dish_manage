@@ -1,9 +1,13 @@
+<% content_for :sidebar_title do %>
+  <%= Spree.t(:dishes) %>
+<% end %>
+
 <% content_for :sub_menu do %>
   <ul id="sub_nav" data-hook="admin_product_sub_tabs" class="inline-menu">
-    <%= tab :products, :match_path => '/products' %>
+    <%= tab :products, :match_path => '/products'%>
     <%= tab :dish_types %>
     <%= tab :day_deliveries %>
-    <%= tab :ingredients %>
+    <%= tab :ingredients, :match_path => '/ingredients' %>
     <%= tab :what_you_needs %>
     <%= tab :nutritions %>
   </ul>
