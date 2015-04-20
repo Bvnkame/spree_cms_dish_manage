@@ -220,7 +220,14 @@ function LoadDataDateDelivery(date_start, date_end)
       //console.log(k);
       var dish = dishes[k];
 
-      html = DishItemFormat(dish.pd_id, dish.id, dish.images[0].product_url, dish.name);
+      var imgUrl = "";
+
+      if(dish.images.length > 0)
+      {
+        imgUrl = dish.images[0].product_url;
+      }
+
+      html = DishItemFormat(dish.pd_id, dish.id, imgUrl, dish.name);
       //console.log(html);
       $(dishContainer).append(html);
     }
