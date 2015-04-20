@@ -2,3 +2,221 @@
 Placeholder manifest file.
 the installer will append this file to the app vendored assets here: 'vendor/assets/stylesheets/spree/backend/all.css'
 */
+
+.cal-button{
+  height: 50px;
+  background: rgb(84, 152, 218);
+  border-radius: 2px;
+}
+
+  .cal-button.disabled{
+    background: #D5D5D5;
+  }
+
+#center-bar{
+  height: 50px;
+  background: rgb(159, 200, 32);
+  border-radius: 2px;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  padding: 10px;
+}
+
+  #center-bar.last{
+    background: rgb(84, 84, 84);
+  }
+
+  #center-bar.next{
+    background: rgb(84, 152, 218);
+  }
+
+#week-content{
+  margin-top: 10px;
+  border-radius: 2px;
+}
+
+.day-of-week
+{
+  color: rgb(255, 255, 255);
+  margin-top: 10px;
+  /*background: rgb(84, 152, 218);*/
+  min-height: 800px;
+  border-radius: 2px;
+}
+
+.day-of-week .title
+{
+  padding: 5px;
+  text-align: center;
+  height: 30px;
+  background-color: #333;
+  border-radius: 2px;
+  margin-bottom: 3px;
+}
+
+#day-deliveries{
+  position: relative;
+}
+
+#dow-header
+{
+  text-align: center;
+}
+
+.dish
+{
+  background: red; 
+  border-radius: 4px;
+  margin: 2px 0px;
+}
+
+  .dish .name
+  {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+  }
+
+.close-button
+{
+  width: 20px;
+  height: 20px;
+  padding: 0 5px;
+  position: absolute;
+  top: 3px;
+  right: 6px;
+  transition: all 0.3s;
+}
+
+.close-button:hover
+{
+  background: red;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+}
+
+.dishes-container
+{
+  border-radius: 2px;
+  background: rgb(84, 152, 218);
+  margin-bottom: 2px;
+}
+
+.dropzone
+{
+  transition: background-color 0.3s;
+}
+
+.drop-active
+{
+  /*background-color: rgb(134, 186, 236);*/
+}
+
+.drag-drop {
+  /*display: inline-block;*/
+  width: 100%;
+  /* padding: 3em; */
+  color: #524545;
+  background-color: #E5E2E2;
+  border: solid 2px #5498DA;
+  -webkit-transform: translate(0px, 0px);
+  transform: translate(0px, 0px);
+  transition: background-color 0.3s;
+  box-sizing: border-box;
+}
+
+.docked{
+  display: inline-block;
+  position: relative;
+}
+
+.dragging
+{
+  display: block; 
+  position: absolute;
+  width: 100px;
+  z-index: 200; 
+}
+
+.space
+{
+  border: none;
+  display: inline-block;
+  background-color: rgb(214, 214, 214);
+  padding: 3em;
+
+  box-shadow: inset 6px 4px 11px -2px #6B6B6B;
+  -webkit-box-shadow: inset 6px 4px 11px -2px #6B6B6B;
+  -moz-box-shadow: inset 6px 4px 11px -2px #6B6B6B;
+  -o-box-shadow: inset 6px 4px 11px -2px #6B6B6B;
+}
+
+.day-of-week .select2-container {
+  width: 100%;
+}
+
+.day-of-week .select2-container .select2-choice {
+  background-color: #9FC820;
+}
+
+.image-container
+{
+  text-align: center;
+  display: block;
+  width: 100%;
+  hight: 40px;
+  margin-top: 2px;
+}
+
+.image-dish
+{
+  width: 80px;
+  height: 80px;
+  background-repeat: no-repeat;
+}
+
+/*-----------------*/
+/*   DISH PICKER   */
+/*-----------------*/
+
+.dishpicker
+{
+  transition: all 0.5s;
+}
+
+.dishpicker:hover,
+.dishpicker:focus
+{
+  width: 140px;
+}
+
+
+/*-----------------*/
+/*    SELECTION    */
+/*-----------------*/
+
+.dish-select-item
+{
+  text-align: center;
+  background-repeat: no-repeat;
+}
+
+.dish-select-item .name
+{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+}
+
+.dish-select-item .image
+{
+  display: block;
+  width: 50%;
+  hight: 30px;
+  /*margin-top: 2px;*/
+}
+

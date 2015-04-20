@@ -2,10 +2,109 @@
   <%= Spree.t(:day_deliveries) %>
 <% end %>
 
-<% content_for :page_actions do %>
-  <li id="new_day_delivery_link">
-    <%= button_link_to Spree.t(:new_day_delivery), new_admin_day_delivery_url, { :remote => true, :icon => 'plus', :id => 'new_day_delivery_link' } %>
-  </li>
-<% end %>
+<div class="time-info">
+  <div>Today is : <%= Time.now %></div>
+</div>
+
+<div class="left four columns">
+</div>
+
+<div id="server-date" data-date="<%= today %>"></div>
+
+<div id="day-deliveries" class="right twelve columns">
+  <div class="two columns"></div>
+
+  <div id="calendar-head" class="alpha omega calendar-header twelve columns">
+    <button id="left-button" class="alpha cal-button one columns">
+      <i class="fa fa-caret-left"></i>
+    </button>
+    <div id="center-bar" class="ten columns" data-datestart='' data-dateend=''>
+    </div>
+    <button id="right-button" class="omega cal-button one columns">
+      <i class="fa fa-caret-right"></i>
+    </button>
+  </div>
+
+  <div class="alpha day-of-week two columns dropzone">
+    <div class="title">
+      <%= Spree.t(:monday)%>
+    </div>
+    <!-- dishes list -->
+    <div class="dishes-container" data-date="">
+    </div>
+    <div class="dishpicker">
+      <p>Dish picker</p>
+    </div>
+  </div>
+
+  <div class="day-of-week two columns dropzone">
+    <div class="title">
+      <%= Spree.t(:tuesday)%>
+    </div>
+
+    <div class="dishes-container" data-date="">
+    </div>
+
+    <div class="dishpicker">
+      <p>Dish picker</p>
+    </div>
+  </div>
+
+  <div class="day-of-week two columns dropzone">
+    <div class="title">
+      <%= Spree.t(:wednesday)%>
+    </div>
+
+    <div class="dishes-container" data-date="">
+
+    </div>
+
+    <div class="dishpicker">
+      <p>Dish picker</p>
+    </div>
+  </div>
+
+  <div class="day-of-week two columns dropzone">
+    <div class="title">
+      <%= Spree.t(:thursday)%>
+    </div>
+
+    <div class="dishes-container" data-date="">
+
+    </div>
+
+    <div class="dishpicker">
+      <p>Dish picker</p>
+    </div>
+  </div>
+
+  <div class="day-of-week two columns dropzone">
+    <div class="title">
+      <%= Spree.t(:friday)%>
+    </div>
+
+    <div class="dishes-container" data-date="">
+
+    </div>
+
+    <div class="dishpicker">
+      <p>Dish picker</p>
+    </div>
+  </div>
+
+  <div class="omega day-of-week two columns dropzone">
+    <div class="title">
+      <%= Spree.t(:saturday)%>
+    </div>
+
+    <div class="dishes-container" data-date="">
+
+    </div>
+
+    <div class="dishpicker">
+      <p>Dish picker</p>
+    </div>
+  </div>
+</div>
 
 <%= render :partial => 'spree/admin/shared/product_sub_menu' %>
