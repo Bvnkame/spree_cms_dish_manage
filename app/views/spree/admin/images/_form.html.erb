@@ -5,7 +5,7 @@
       <%= f.file_field :attachment %>
     </div>
     <div data-hook="variant" class="field">
-      <%= f.hidden_field :viewable_id, :value => @product.id %>
+      <%= f.hidden_field :viewable_id, :value => @product.master.id %>
     </div>
   </div>
   <div data-hook="alt_text" class="field omega five columns">

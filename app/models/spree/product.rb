@@ -14,6 +14,10 @@ module Spree
 
     # delegate :images, to: :master, prefix: true
     # alias_method :images, :master_images
+    has_one :master,
+      -> { where is_master: true },
+      inverse_of: :product,
+      class_name: 'Spree::Variant'
 
     has_many :variants_including_master,
       -> { order("#{::Spree::Variant.quoted_table_name}.position ASC") },
@@ -33,10 +37,24 @@ module Spree
 
     after_save :run_touch_callbacks, if: :anything_changed?
     after_save :reset_nested_changes
+    after_save :save_master
+    after_initialize :ensure_master
 
     before_validation :normalize_slug, on: :update
     validates :name, presence: true
     validates :slug, length: { minimum: 3 }, uniqueness: { allow_blank: true }
+
+    def ensure_master
+      return unless new_record?
+      self.master ||= build_master
+    end
+
+    def save_master
+      if master && (master.changed? || master.new_record? || (master.default_price && (master.default_price.changed? || master.default_price.new_record?)))
+        master.save!
+        @nested_changes = true
+      end
+    end
 
     def has_variants?
       variants.any?
