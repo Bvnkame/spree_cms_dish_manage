@@ -17,7 +17,7 @@
       <% end if can?(:admin, Spree::Image) %>
       <%= content_tag :li, :class => ('active' if current == 'Experts') do %>
         <%= link_to_with_icon 'picture-o', Spree.t(:experts), admin_product_product_expert_url(@product) %>
-      <% end if can?(:expert, Bm::Expert) %>
+      <% end if can?(:box_expert, Bm::Expert) %>
       <%= content_tag :li, :class => ('active' if current == 'Nutritions') do %>
         <%= link_to_with_icon 'picture-o', Spree.t(:nutritions), admin_product_product_nutritions_url(@product) %>
       <% end if can?(:admin, Dish::Nutrition) %>
