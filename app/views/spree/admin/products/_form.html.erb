@@ -30,27 +30,43 @@
 
     <div class="clear"></div>
 
-    <div data-hook="admin_product_form_available_on">
+    <!-- <div data-hook="admin_product_form_available_on">
       <%= f.field_container :available_on do %>
         <%= f.label :available_on, Spree.t(:available_on) %>
         <%= f.error_message_on :available_on %>
         <%= f.text_field :available_on, :value => datepicker_field_value(@product.available_on), :class => 'datepicker' %>
       <% end %>
     </div>
-
-    <div data-hook="admin_product_form_promotionable">
+ -->
+    <!-- <div data-hook="admin_product_form_promotionable">
       <%= f.field_container :promotionable do %>
         <%= f.label :promotionable do %>
           <%= f.check_box :promotionable %> <%= Spree.t(:promotionable) %>
         <% end %>
       <% end %>
-    </div>
+    </div> -->
 
     <div data-hook="admin_product_form_dish_types">
       <%= f.field_container :dish_type do %>
         <%= f.label :dish_type_id, Spree.t(:dish_types) %>
         <%= f.collection_select(:dish_type_id, @dish_types, :id, :name, { :include_blank => false }, { :class => 'select2' }) %>
         <%= f.error_message_on :dish_type %>
+      <% end %>
+    </div>
+
+    <div data-hook="admin_product_form_difficulty">
+      <%= f.field_container :difficulty do %>
+        <%= f.label :difficulty_id, Spree.t(:difficulty) %>
+        <%= f.collection_select(:difficulty_id, @difficulties, :id, :name, { :include_blank => false }, { :class => 'select2' }) %>
+        <%= f.error_message_on :difficulty_id %>
+      <% end %>
+    </div>
+
+    <div data-hook="admin_product_form_time_cook">
+      <%= f.field_container :time_cook do %>
+        <%= f.label :time_cook, Spree.t(:time_cook) + " (min)" %>
+        <%= f.text_field :time_cook, type: "number" %>
+        <%= f.error_message_on :time_cook %>
       <% end %>
     </div>
 

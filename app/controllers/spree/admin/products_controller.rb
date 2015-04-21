@@ -97,6 +97,7 @@ module Spree
         #@nutritions = Dish::Nutrition.order(:name)
         #@shipping_categories = ShippingCategory.order(:name)
         @dish_types = Dish::DishType.order(:name)
+        @difficulties = Dish::Difficulty.all
       end
 
       # def get_ingredients
