@@ -1,51 +1,55 @@
 $(document).ready(function () {
   'use strict';
-  var week = 0;
 
   var objToday = $(document).find("#server-date");
-  var today = objToday.attr("data-date");
 
-  LoadWeekData(0, today);
+  if(objToday.length >0 )
+  {
+    var week = 0;
+    var today = objToday.attr("data-date");
 
-  //Add select collection
-  $(document).find('.dishpicker').dishPicker();
+    LoadWeekData(0, today);
 
-  //left button
-  var leftButton = $(document).find("#left-button");
-  leftButton.on("click", function(){
-    console.log("Click");
-    if(week > -1) 
-    {
-      week--;
-      LoadWeekData(week, today);
-    } 
-  });
+    //Add select collection
+    $(document).find('.dishpicker').dishPicker();
 
-  //right button
-  var rightButton = $(document).find("#right-button");
-  rightButton.on("click", function(){
-    if(week < 1) 
-    {
-      week++;
-      LoadWeekData(week, today);
-    }
-  });
+    //left button
+    var leftButton = $(document).find("#left-button");
+    leftButton.on("click", function(){
+      console.log("Click");
+      if(week > -1) 
+      {
+        week--;
+        LoadWeekData(week, today);
+      } 
+    });
 
-  $(".close-button").on("click", function() {
-    console.log("Click");
+    //right button
+    var rightButton = $(document).find("#right-button");
+    rightButton.on("click", function(){
+      if(week < 1) 
+      {
+        week++;
+        LoadWeekData(week, today);
+      }
+    });
 
-    var dishUI = $(this).parent();
-    var dishContainerUI = $(dishUI).parent();
+    $(".close-button").on("click", function() {
+      console.log("Click");
 
-    var dishid = $(dishUI).attr("data-dishid");
-    var date = $(dishContainerUI).attr("data-date");
+      var dishUI = $(this).parent();
+      var dishContainerUI = $(dishUI).parent();
 
-    //Send api
-    DeleteDishFromDateDelivery(dishid, date);
-    //Clear dish
-    dishUI.remove();
+      var dishid = $(dishUI).attr("data-dishid");
+      var date = $(dishContainerUI).attr("data-date");
 
-  });
+      //Send api
+      DeleteDishFromDateDelivery(dishid, date);
+      //Clear dish
+      dishUI.remove();
+
+    });
+  }
 
 });
 
