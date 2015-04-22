@@ -7,6 +7,7 @@ module Spree
       # create.before :create_before
       # update.before :update_before
       helper_method :clone_object_url
+      helper_method :dishtype
 
       def show
         session[:return_to] ||= request.referer
@@ -147,6 +148,12 @@ module Spree
 
       def clone_object_url(resource)
         clone_admin_product_url resource
+      end
+
+      def dishtype(id)
+        dishtype = Dish::DishType.find(:id)
+        puts "IDDDDDDDDDDDDDDDDDDDDDD: ", id
+        return dishtype.name
       end
 
       private
