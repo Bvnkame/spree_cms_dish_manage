@@ -187,12 +187,6 @@ the installer will append this file to the app vendored assets here: 'vendor/ass
   transition: all 0.5s;
 }
 
-.dishpicker:hover,
-.dishpicker:focus
-{
-  width: 140px;
-}
-
 
 /*-----------------*/
 /*    SELECTION    */

@@ -110,7 +110,7 @@ function CalculateTimeByWeek(week, today)
   date.setDate(date.getDate() + 7 * week - date.getDay() + 1);
   var firstDate = new Date(date);
 
-  date.setDate(date.getDate() + 5);
+  date.setDate(date.getDate() + 4);
   var lastDate = new Date(date);
 
   return {
