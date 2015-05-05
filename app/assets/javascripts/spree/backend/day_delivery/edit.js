@@ -34,6 +34,16 @@ $(document).ready(function () {
       }
     });
 
+    $(".dish").on("mouseleave", function() {
+      var closeButton = $(this).find(".close-button");
+      closeButton.removeClass("enable");
+    });
+
+    $(".dish").on("mouseenter", function() {
+      var closeButton = $(this).find(".close-button");
+      closeButton.addClass("enable");
+    });
+
     $(".close-button").on("click", function() {
       console.log("Click");
 

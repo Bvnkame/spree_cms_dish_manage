@@ -88,6 +88,12 @@ the installer will append this file to the app vendored assets here: 'vendor/ass
   top: 3px;
   right: 6px;
   transition: all 0.3s;
+  display: none;
+}
+
+.close-button.enable
+{
+  display: block;
 }
 
 .close-button:hover
@@ -192,25 +198,43 @@ the installer will append this file to the app vendored assets here: 'vendor/ass
 /*    SELECTION    */
 /*-----------------*/
 
-.dish-select-item
-{
-  text-align: center;
-  background-repeat: no-repeat;
-}
+  .dish-select-item
+  {
+    text-align: center;
+    background-repeat: no-repeat;
+  }
 
-.dish-select-item .name
-{
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  text-align: center;
-}
+  .dish-select-item .name
+  {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+  }
 
-.dish-select-item .image
-{
-  display: block;
-  width: 50%;
-  hight: 30px;
-  /*margin-top: 2px;*/
-}
+  .dish-select-item .image
+  {
+    display: block;
+    width: 50%;
+    hight: 30px;
+    /*margin-top: 2px;*/
+  }
 
+  .select-img
+  {
+    display: inline-block;
+    width: 35px;
+    height: 30px;
+  }
+
+  .select-text
+  {
+    /* margin-bottom: 36px; */
+    margin-left: 10px;
+    height: auto;
+    text-align: center;
+    vertical-align: middle;
+    display: inline-block;
+    bottom: 13px;
+    position: relative;
+  }

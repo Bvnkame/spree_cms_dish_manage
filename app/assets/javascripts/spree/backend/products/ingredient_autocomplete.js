@@ -31,15 +31,31 @@ var set_ingredient_select = function(){
         }
       },
       formatResult: function (ingredient) {
-        // console.log(ingredient);
-        // var html = ' \
-        //   ' + ingredient.images[0].mini_url + ' \
-        //   ' + ingredient.name + ' \
-        // ';
-        return ingredient.name;
+
+        var imgUrl = "";
+        if(ingredient.images.length > 0)
+        {
+          imgUrl = ingredient.images[0].mini_url;
+        }
+
+        var html = ' \
+          <img class="select-img" src="' + imgUrl + '"> \
+          <div class="select-text" >' + ingredient.name + '</div> \
+        ';
+        return html;
       },
       formatSelection: function (ingredient) {
-        return ingredient.name;
+        var imgUrl = "";
+        if(ingredient.images.length > 0)
+        {
+          imgUrl = ingredient.images[0].mini_url;
+        }
+
+        var html = ' \
+          <img class="select-img" src="' + imgUrl + '"> \
+          <div class="select-text" >' + ingredient.name + '</div> \
+        ';
+        return html;
       }
     });
   }

@@ -90,4 +90,24 @@ function addNewDish(parent, dish)
   ";
 
   $(objectDishContainer).append(html);
+
+  //Check full dishes
+  checkFullDish(objectDishContainer);
+
+}
+
+function checkFullDish(objectDishContainer)
+{
+  var dishes = $(objectDishContainer).find(".dish");
+  var dishpicker = $(objectDishContainer).find(".dishpicker");
+
+  //Check if number of dishes is more than maximum dishes
+  if (dishes.length >= 2)
+  {
+    dishpicker.hide();
+  }
+  else
+  {
+    dishpicker.show();
+  }
 }
