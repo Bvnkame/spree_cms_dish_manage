@@ -55,6 +55,12 @@ the installer will append this file to the app vendored assets here: 'vendor/ass
   margin-bottom: 3px;
 }
 
+.week-by-text
+{
+  font-size: 14px;
+  font-weight: bold;
+}
+
 #day-deliveries{
   position: relative;
 }
@@ -77,6 +83,8 @@ the installer will append this file to the app vendored assets here: 'vendor/ass
     overflow: hidden;
     text-overflow: ellipsis;
     text-align: center;
+    width: 120px;
+    margin: 0 auto;
   }
 
 .close-button
@@ -182,6 +190,8 @@ the installer will append this file to the app vendored assets here: 'vendor/ass
   width: 80px;
   height: 80px;
   background-repeat: no-repeat;
+  margin-top: 2px;
+  border-radius: 2px;
 }
 
 /*-----------------*/
@@ -209,6 +219,8 @@ the installer will append this file to the app vendored assets here: 'vendor/ass
     width: 40px;
     height: 29px;
     display: inline-block;
+    border-radius: 2px;
+    margin-top: 6px;
   }
 
   .dish-select-item .name
@@ -218,7 +230,7 @@ the installer will append this file to the app vendored assets here: 'vendor/ass
     text-overflow: ellipsis;
     display: inline;
     position: absolute;
-    margin-top: 5px;
+    margin-top: 12px;
     margin-left: 5px;
     margin-right: 2px;
     font-size: 12px;

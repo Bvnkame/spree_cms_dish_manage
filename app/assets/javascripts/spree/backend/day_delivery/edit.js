@@ -65,21 +65,25 @@ $(document).ready(function () {
 
 function LoadWeekData(week, today)
 {
+  var weekByText;
 
   //UI
   switch(week)
   {
     case 1:
+      weekByText = "Upcomming Week";
       $("#right-button").addClass("disabled");
       $("#center-bar").addClass("next");
     break;
     case 0:
+      weekByText = "This Week";
       $("#center-bar").removeClass("last");
       $("#center-bar").removeClass("next");
       $("#left-button").removeClass("disabled");
       $("#right-button").removeClass("disabled");
     break;
     case -1:
+      weekByText = "Last Week";
       $("#center-bar").addClass("last");
       $("#left-button").addClass("disabled");
     break;
@@ -107,7 +111,13 @@ function LoadWeekData(week, today)
   $(centerbar).attr("data-datestart", TimeFormat(time.firstDate));
   $(centerbar).attr("data-dateend", TimeFormat(time.lastDate));
 
-  $(centerbar).text(TimeFormat(time.firstDate) + " ==> " + TimeFormat(time.lastDate));
+  var weekByDate = TimeFormat(time.firstDate) + " ==> " + TimeFormat(time.lastDate);
+
+  var html = " <p class='week-by-text'>" + weekByText + "<p> \
+               <p class='week-by-date'>" + weekByDate + "<p> \
+             ";
+
+  $(centerbar).html(html);
 
   //Load data
   LoadDataDateDelivery(TimeFormat(time.firstDate), TimeFormat(time.lastDate));
@@ -285,10 +295,10 @@ function DishItemFormat(id, dishid, imgUrl, name)
       <div class='close-button'>\
         <i class='fa fa-times'></i>\
       </div>\
-      <div class='image-container'>\
+      <div title='" + name + "' class='image-container'>\
         <img class='image-dish' src='" + imgUrl + "'>\
       </div>\
-      <p class='name'>" + name + "</p>\
+      <p  title='" + name + "' class='name'>" + name + "</p>\
     </div>\
   ";
 

@@ -36,7 +36,7 @@ $.fn.dishPicker = function() {
 
       this.description ='\
         <div class="dish-select-item">\
-          <img class="img" src="' + imgUrl + '">\
+          <img title="' + dish.name + '" class="img" src="' + imgUrl + '">\
           <div title="' + dish.name + '" class="name">' + dish.name + '</div>\
         </div>\
       ';
@@ -82,10 +82,10 @@ function addNewDish(parent, dish)
       <div class='close-button'>\
         <i class='fa fa-times'></i>\
       </div>\
-      <div class='image-container'>\
+      <div title='" + dish.name + "' class='image-container'>\
         <img class='image-dish' src='" + imgUrl + "'>\
       </div>\
-      <p class='name'>" + dish.name + "</p>\
+      <p title='" + dish.name + "' class='name'>" + dish.name + "</p>\
     </div>\
   ";
 
