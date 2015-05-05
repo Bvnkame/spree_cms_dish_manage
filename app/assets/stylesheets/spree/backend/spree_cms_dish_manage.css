@@ -200,8 +200,15 @@ the installer will append this file to the app vendored assets here: 'vendor/ass
 
   .dish-select-item
   {
-    text-align: center;
+    /*text-align: center;*/
     background-repeat: no-repeat;
+  }
+
+  .dish-select-item .img
+  {
+    width: 40px;
+    height: 29px;
+    display: inline-block;
   }
 
   .dish-select-item .name
@@ -209,15 +216,13 @@ the installer will append this file to the app vendored assets here: 'vendor/ass
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    text-align: center;
-  }
-
-  .dish-select-item .image
-  {
-    display: block;
-    width: 50%;
-    hight: 30px;
-    /*margin-top: 2px;*/
+    display: inline;
+    position: absolute;
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-right: 2px;
+    font-size: 12px;
+    width: 97px;
   }
 
   .select-img
