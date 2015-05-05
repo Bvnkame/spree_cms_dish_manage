@@ -31,6 +31,11 @@ var set_ingredient_select = function(){
         }
       },
       formatResult: function (ingredient) {
+        // console.log(ingredient);
+        // var html = ' \
+        //   ' + ingredient.images[0].mini_url + ' \
+        //   ' + ingredient.name + ' \
+        // ';
         return ingredient.name;
       },
       formatSelection: function (ingredient) {

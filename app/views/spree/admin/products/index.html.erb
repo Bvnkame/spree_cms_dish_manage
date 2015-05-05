@@ -22,18 +22,10 @@
         <%- locals = {:f => f} %>
 
         <div data-hook="admin_products_index_search">
-          <div class="alpha nine columns">
+          <div class="alpha sixteen columns">
             <div class="field">
               <%= f.label :name_cont, Spree.t(:name) %>
               <%= f.text_field :name_cont, :size => 15 %>
-            </div>
-          </div>
-          <div class="three columns omega">
-            <div class="field checkbox">
-              <label>
-                <%= f.check_box :deleted_at_null, {:checked => params[:q][:deleted_at_null] == '0'}, '0', '1' %>
-                <%= Spree.t(:show_deleted) %>
-              </label>
             </div>
           </div>
         </div>
@@ -77,7 +69,7 @@
             <% else %>
               <td class="align-center"></td>
             <% end %>
-            <td><%= link_to product.try(:name), edit_admin_product_path(product) %></td>
+            <td class="align-center"><%= link_to product.try(:name), edit_admin_product_path(product) %></td>
             <td class="align-center"><%= product.dish_type.name rescue '' %></td>
             <td class="align-center"><%= product.dish_price rescue '' %></td>
             <td class="actions" data-hook="admin_products_index_row_actions">
