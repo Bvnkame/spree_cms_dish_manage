@@ -1,3 +1,14 @@
+
+$(document).on("mouseleave", ".dish", function() {
+  var closeButton = $(this).find(".close-button");
+  closeButton.removeClass("enable");
+});
+
+$(document).on("mouseenter", ".dish", function() {
+  var closeButton = $(this).find(".close-button");
+  closeButton.addClass("enable");
+});
+
 $(document).ready(function () {
   'use strict';
 
@@ -32,16 +43,6 @@ $(document).ready(function () {
         week++;
         LoadWeekData(week, today);
       }
-    });
-
-    $(".dish").on("mouseleave", function() {
-      var closeButton = $(this).find(".close-button");
-      closeButton.removeClass("enable");
-    });
-
-    $(".dish").on("mouseenter", function() {
-      var closeButton = $(this).find(".close-button");
-      closeButton.addClass("enable");
     });
 
     $(".close-button").on("click", function() {
