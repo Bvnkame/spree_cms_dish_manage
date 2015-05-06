@@ -1,3 +1,6 @@
+var DOWText = [ "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+var MAX_DISHES = 10;
+
 
 $(document).on("mouseleave", ".dish", function() {
   var closeButton = $(this).find(".close-button");
@@ -7,6 +10,22 @@ $(document).on("mouseleave", ".dish", function() {
 $(document).on("mouseenter", ".dish", function() {
   var closeButton = $(this).find(".close-button");
   closeButton.addClass("enable");
+});
+
+$(document).on("click", ".close-button", function() {
+  console.log("Click");
+
+  var dishUI = $(this).parent();
+  var dishContainerUI = $(dishUI).parent();
+
+  var dishid = $(dishUI).attr("data-dishid");
+  var date = $(dishContainerUI).attr("data-date");
+
+  //Send api
+  DeleteDishFromDateDelivery(dishid, date);
+  //Clear dish
+  dishUI.remove();
+
 });
 
 $(document).ready(function () {
@@ -43,22 +62,6 @@ $(document).ready(function () {
         week++;
         LoadWeekData(week, today);
       }
-    });
-
-    $(".close-button").on("click", function() {
-      console.log("Click");
-
-      var dishUI = $(this).parent();
-      var dishContainerUI = $(dishUI).parent();
-
-      var dishid = $(dishUI).attr("data-dishid");
-      var date = $(dishContainerUI).attr("data-date");
-
-      //Send api
-      DeleteDishFromDateDelivery(dishid, date);
-      //Clear dish
-      dishUI.remove();
-
     });
   }
 
@@ -249,6 +252,7 @@ function LoadDataDateDelivery(date_start, date_end)
 
       if(dish.images.length > 0)
       {
+
         imgUrl = dish.images[0].product_url;
       }
 
@@ -257,6 +261,7 @@ function LoadDataDateDelivery(date_start, date_end)
       $(dishContainer).append(html);
     }
   }
+  UpdateIndexAndQuantity();
 }
 
 /*--------------------*/
@@ -293,6 +298,9 @@ function DishItemFormat(id, dishid, imgUrl, name)
 {
   var html = "\
     <div class='dish draggable drag-drop docked' data-id='" + id + "' data-dishid='" + dishid + "'>\
+      <div class='index'>\
+        <p></p>\
+      </div>\
       <div class='close-button'>\
         <i class='fa fa-times'></i>\
       </div>\
@@ -356,3 +364,50 @@ function DeleteDishFromDateDelivery(dishid, date)
     }
   });
 }
+
+function UpdateIndexAndQuantity()
+{
+  var dishContainer = $(document).find(".dishes-container");
+
+  for ( i = 0; i < dishContainer.length; i++)
+  {
+      var dishes = $(dishContainer[i]).find(".dish");
+      var dishPicker = $(dishContainer[i]).next();
+
+      //Check dishpicker
+      if(dishes.length >= MAX_DISHES)
+      {
+        $(dishPicker).hide();
+      }
+      else
+      {
+        $(dishPicker).show();
+      }
+
+      var objectDOWTitle = $(dishContainer[i]).prev();
+      $(objectDOWTitle).text( DOWText[i] + " (" + dishes.length + ")");
+
+      for( k = 0; k < dishes.length; k++)
+      {
+        var indexDiv = $(dishes[k]).find(".index");
+        var indexText = $(indexDiv).find("p");
+
+        indexText.text(k + 1);
+      }
+  }
+}
+
+function CheckExistDish(objDishContainer, id)
+{
+  var result = true;
+  var dishes = $(objDishContainer).find(".dish");
+  for( i = 0; i < dishes.length; i++)
+  {
+    if($(dishes[i]).attr("data-dishid") == id)
+    {
+      result = false;
+    }
+  }
+
+  return result;
+} 

@@ -54,16 +54,26 @@ $.fn.dishPicker = function() {
     console.log("removed val=" + e.val + " choice=" + e.choice.text);
   })
   .on("select2-selecting", function(e) {
+    //Check duplicate dish
+    var dish = e.object;
+    var objectDishContainer = $(this)[0].previousSibling.previousSibling.previousSibling;
 
-    addNewDish($(this), e.object);
-    //console.log("selecting val=" + e.val + " choice=" + e.object.text);
+    if(CheckExistDish(objectDishContainer, dish.id))
+    {
+      addNewDish(objectDishContainer, dish);
+      //console.log("selecting val=" + e.val + " choice=" + e.object.text);
+    }
+    else
+    {
+      show_flash("notice", "Dish is dupplicated!");
+    }
   });
 };
 
-function addNewDish(parent, dish)
+function addNewDish(objectDishContainer, dish)
 {
   //console.log(, dish);
-  var objectDishContainer = parent[0].previousSibling.previousSibling.previousSibling;
+  
 
   console.log(objectDishContainer);
   var imgUrl = "";
@@ -79,6 +89,9 @@ function addNewDish(parent, dish)
 
   var html = "\
     <div class='dish draggable drag-drop docked' data-id='" + id + "'>\
+      <div class='index'>\
+        <p>1</p>\
+      </div>\
       <div class='close-button'>\
         <i class='fa fa-times'></i>\
       </div>\
@@ -94,6 +107,8 @@ function addNewDish(parent, dish)
   //Check full dishes
   checkFullDish(objectDishContainer);
 
+  //Update quantity
+  UpdateIndexAndQuantity();
 }
 
 function checkFullDish(objectDishContainer)

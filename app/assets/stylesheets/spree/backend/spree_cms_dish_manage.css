@@ -75,6 +75,12 @@ the installer will append this file to the app vendored assets here: 'vendor/ass
   background: red; 
   border-radius: 4px;
   margin: 2px 0px;
+  transition: all 0.3s;
+}
+
+.dish:hover
+{
+  background: #D6FFAB;
 }
 
   .dish .name
@@ -85,6 +91,18 @@ the installer will append this file to the app vendored assets here: 'vendor/ass
     text-align: center;
     width: 120px;
     margin: 0 auto;
+  }
+
+  .dish .index
+  {
+    width: 40px;
+    height: 25px;
+    background: rgb(76, 75, 75);
+    color: rgb(210, 210, 210);
+    padding: 3px;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 2px;
   }
 
 .close-button
@@ -115,7 +133,7 @@ the installer will append this file to the app vendored assets here: 'vendor/ass
 .dishes-container
 {
   border-radius: 2px;
-  background: rgb(84, 152, 218);
+  background: rgb(255, 255, 255);
   margin-bottom: 2px;
 }
 

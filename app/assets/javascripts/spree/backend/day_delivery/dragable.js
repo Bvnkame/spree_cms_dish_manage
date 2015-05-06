@@ -14,8 +14,8 @@ interact('.draggable')
       var width = original.offsetWidth
           height = original.offsetHeight;
 
-      // clone.style.Width = width;
-      // clone.style.Heigh = height;
+      $(clone).width(width);
+      $(clone).height(height);
       // console.log(width + ", " + height);
 
       clone.classList.add("dragging");
@@ -98,8 +98,8 @@ interact('.dropzone').dropzone({
       //console.log("SET");
 
       //Calculate position
-      // var width = draggableElement.offsetWidth;
-      // var height = draggableElement.offsetHeight;
+      var width = draggableElement.offsetWidth;
+      var height = draggableElement.offsetHeight;
 
       //Get absolute position
 
@@ -109,6 +109,9 @@ interact('.dropzone').dropzone({
       var elementHeight = draggableElement.offsetHeight;
 
       var index = parseInt(distance / elementHeight);
+
+      $(spaceElement).width(width);
+      $(spaceElement).height(height);
       
       dishesContainnerElement[0].insertBefore(spaceElement, dishesContainnerElement[0].childNodes[index + 1]);
     }
@@ -151,6 +154,8 @@ interact('.dropzone').dropzone({
     var draggableElement = event.relatedTarget,
         dropzoneElement = event.target;
 
+    var dishId = $(draggableElement).attr("data-dishid");
+
     // console.log(dropzoneElement);
     var dishesContainnerElement = dropzoneElement.getElementsByClassName("dishes-container");
 
@@ -158,19 +163,33 @@ interact('.dropzone').dropzone({
     var listSpaceElement = dishesContainnerElement[0].getElementsByClassName("space");
     if (listSpaceElement.length != 0)
     {
-      dishesContainnerElement[0].replaceChild(draggableElement, listSpaceElement[0]);
 
-      //Update date
-      var date = dishesContainnerElement[0].getAttribute("data-date");
-      var id = draggableElement.getAttribute("data-id");
-      
-      console.log(date + "," + id);
+      if(CheckExistDish(dishesContainnerElement, dishId))
+      {
+        dishesContainnerElement[0].replaceChild(draggableElement, listSpaceElement[0]);
 
-      UpdateDateDelivery(id, date);
+        //Update date
+        var date = dishesContainnerElement[0].getAttribute("data-date");
+        var id = draggableElement.getAttribute("data-id");
+        
+        console.log(date + "," + id);
+
+        UpdateDateDelivery(id, date);
+        show_flash("success", "Update dish successfully!");
+      }
+      else
+      {
+        listSpaceElement[0].remove();
+        show_flash("notice", "Dish is dupplicated!");
+      }
 
     }
     //Add new dish to dishes container
     //dishesContainnerElement[0].appendChild( draggableElement );
+
+    //Update quantity
+    UpdateIndexAndQuantity();
+
   },
   ondropdeactivate: function (event) {
     // remove active dropzone feedback
@@ -178,3 +197,8 @@ interact('.dropzone').dropzone({
     event.target.classList.remove('drop-target');
   }
 });
+
+function UpdateIndex()
+{
+
+}
