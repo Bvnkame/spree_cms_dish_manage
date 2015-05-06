@@ -105,6 +105,21 @@ the installer will append this file to the app vendored assets here: 'vendor/ass
     border-radius: 2px;
   }
 
+  .dish.main-dish
+  {
+    background: #FFD5B7;
+  }
+
+  .dish.soup
+  {
+    background: #D0E4F3;
+  }
+
+  .dish.vegetable
+  {
+    background: #C7FFC8;
+  }
+
 .close-button
 {
   width: 20px;
@@ -240,6 +255,23 @@ the installer will append this file to the app vendored assets here: 'vendor/ass
     border-radius: 2px;
     margin-top: 6px;
   }
+
+    .dish-select-item .img.main-dish
+    {
+      border: rgb(80, 55, 214) solid 2px;
+    }
+
+    .dish-select-item .img.soup
+    {
+      border-radius: 50%;
+      border: 2px solid rgb(77, 161, 0);
+    }
+
+    .dish-select-item .img.vegetable
+    {
+      border-radius: 30%;
+      border: 2px solid rgb(136, 50, 6);
+    }
 
   .dish-select-item .name
   {

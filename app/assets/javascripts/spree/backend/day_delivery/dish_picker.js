@@ -34,9 +34,24 @@ $.fn.dishPicker = function() {
         imgUrl = dish.images[0].product_url;
       }
 
+      var dishType = "";
+
+      switch(dish.dish_type_id)
+      {
+        case 0:
+          dishType = "main-dish";
+        break;
+        case 1:
+          dishType = "soup";
+        break;
+        case 2:
+          dishType = "vegetable";
+        break;
+      }
+
       this.description ='\
         <div class="dish-select-item">\
-          <img title="' + dish.name + '" class="img" src="' + imgUrl + '">\
+          <img title="' + dish.name + '" class="img ' + dishType + '" src="' + imgUrl + '">\
           <div title="' + dish.name + '" class="name">' + dish.name + '</div>\
         </div>\
       ';
@@ -87,8 +102,10 @@ function addNewDish(objectDishContainer, dish)
   var id = AddDateDelivery(dishId, date);
   console.log(id);
 
+  var dishType = getDishType(dish.dish_type_id);
+
   var html = "\
-    <div class='dish draggable drag-drop docked' data-id='" + id + "'>\
+    <div class='dish draggable drag-drop docked " + dishType + "' data-id='" + id + "'>\
       <div class='index'>\
         <p>1</p>\
       </div>\
@@ -109,6 +126,26 @@ function addNewDish(objectDishContainer, dish)
 
   //Update quantity
   UpdateIndexAndQuantity();
+}
+
+function getDishType(typeId)
+{
+  var dishType = "";
+
+  switch(typeId)
+  {
+    case 0:
+      dishType = "main-dish";
+    break;
+    case 1:
+      dishType = "soup";
+    break;
+    case 2:
+      dishType = "vegetable";
+    break;
+  }
+
+  return dishType;
 }
 
 function checkFullDish(objectDishContainer)

@@ -256,7 +256,7 @@ function LoadDataDateDelivery(date_start, date_end)
         imgUrl = dish.images[0].product_url;
       }
 
-      html = DishItemFormat(dish.pd_id, dish.id, imgUrl, dish.name);
+      html = DishItemFormat(dish.pd_id, dish.dish_type_id, dish.id, imgUrl, dish.name);
       //console.log(html);
       $(dishContainer).append(html);
     }
@@ -294,10 +294,13 @@ function GetDataByRangeOfDate(dateStart, dateEnd)
   return dataResult;
 }
 
-function DishItemFormat(id, dishid, imgUrl, name)
+function DishItemFormat(id, typeid, dishid, imgUrl, name)
 {
+
+  var dishType = getDishType(typeid);
+
   var html = "\
-    <div class='dish draggable drag-drop docked' data-id='" + id + "' data-dishid='" + dishid + "'>\
+    <div class='dish draggable drag-drop docked " + dishType + "' data-id='" + id + "' data-dishid='" + dishid + "'>\
       <div class='index'>\
         <p></p>\
       </div>\
