@@ -12,6 +12,8 @@
 
 <div id="new_ingredient_wrapper" data-hook></div>
 
+<%= paginate @ingredients %>
+
 <% if @ingredients.any? %>
   <table>
     <colgroup>
@@ -27,7 +29,7 @@
     </thead>
     <tbody>
     <% @ingredients.each do |ingredient| %>
-      <tr>
+      <tr class="<%= cycle('odd', 'even') %>">
         <% if ingredient.images.any? %>
           <td class="align-center"><%= image_tag ingredient.images.first.attachment.url(:mini) %></td>
         <% else %>
@@ -50,3 +52,5 @@
     <%= Spree.t(:no_experts_found) %>.
   </div>
 <% end %>
+
+<%= paginate @ingredients %>

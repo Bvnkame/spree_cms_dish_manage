@@ -16,6 +16,7 @@ module Spree
       def location_after_save
         admin_nutritions_url
       end
+
     end
   end
 end
