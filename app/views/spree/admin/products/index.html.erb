@@ -56,7 +56,7 @@
       <tr data-hook="admin_products_index_headers">
         <th><%= Spree.t(:image) %></th>
         <th><%= sort_link @search,:name, Spree.t(:name), { :default_order => "desc" }, {:title => 'admin_products_listing_name_title'} %></th>
-        <th><%= sort_link @search,:dish_type, Spree.t(:type), {}, {:title => 'admin_products_listing_price_title'} %></th>
+        <th><%= sort_link @search,:dish_type_id, Spree.t(:type), {}, {:title => 'admin_products_listing_type_title'} %></th>
         <th><%= sort_link @search,:dish_price, Spree.t(:master_price), {}, {:title => 'admin_products_listing_price_title'} %></th>
         <th data-hook="admin_products_index_header_actions" class="actions"></th>
       </tr>
@@ -71,7 +71,7 @@
             <% end %>
             <td class="align-center"><%= link_to product.try(:name), edit_admin_product_path(product) %></td>
             <td class="align-center"><%= product.dish_type.name rescue '' %></td>
-            <td class="align-center"><%= product.dish_price rescue '' %></td>
+            <td class="align-center"><%= number_to_currency(product.dish_price, :unit => 'VND', precision: 0, seperator: ".", format: "%n %u") rescue '' %></td>
             <td class="actions" data-hook="admin_products_index_row_actions">
               <%= link_to_edit product, :no_text => true, :class => 'edit' if can?(:edit, product) && !product.deleted? %>
               &nbsp;

@@ -23,7 +23,7 @@
     <div data-hook="admin_product_form_price">
     <%= f.field_container :dish_price do %>
       <%= f.label :dish_price, raw(Spree.t(:dish_price) + content_tag(:span, ' *', :class => "required")) %>
-      <%= f.text_field :dish_price, :value => number_to_currency(@product.dish_price, :unit => ''), :required => true %>
+      <%= f.text_field :dish_price, :value => number_to_currency(@product.dish_price, :unit => 'VND', precision: 0, seperator: ".", format: "%n %u"), :required => true %>
       <%= f.error_message_on :dish_price %>
     <% end %>
     </div>
