@@ -21,13 +21,16 @@ module Spree
 
       def update
 
-        price = params[:product][:dish_price];
+        if (params[:product][:dish_price])
 
-        price = price.gsub("VND", "")
+          price = params[:product][:dish_price];
 
-        price = price.gsub(",", "")
+          price = price.gsub("VND", "")
 
-        params[:product][:dish_price] = price.delete(' ')
+          price = price.gsub(",", "")
+
+          params[:product][:dish_price] = price.delete(' ')
+        end
 
         if params[:product][:ingredient_ids].present?
           params[:product][:ingredient_ids] = params[:product][:ingredient_ids].split(',')
