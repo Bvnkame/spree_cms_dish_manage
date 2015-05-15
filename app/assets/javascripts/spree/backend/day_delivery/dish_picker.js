@@ -51,6 +51,7 @@ $.fn.dishPicker = function() {
 
       this.description ='\
         <div class="dish-select-item">\
+          <div class=" select-dish ' + dishType + '"> </div>\
           <img title="' + dish.name + '" class="img ' + dishType + '" src="' + imgUrl + '">\
           <div title="' + dish.name + '" class="name">' + dish.name + '</div>\
         </div>\
