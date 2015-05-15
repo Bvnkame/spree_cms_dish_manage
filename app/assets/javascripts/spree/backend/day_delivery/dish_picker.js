@@ -134,13 +134,13 @@ function getDishType(typeId)
 
   switch(typeId)
   {
-    case 0:
+    case 1:
       dishType = "main-dish";
     break;
-    case 1:
+    case 2:
       dishType = "soup";
     break;
-    case 2:
+    case 3:
       dishType = "vegetable";
     break;
   }
