@@ -289,7 +289,7 @@ the installer will append this file to the app vendored assets here: 'vendor/ass
   width: 45px;
   position: absolute;
   bottom: 42px;
-  opacity: 0.4;
+  opacity: 0.7;
   border-radius: 0 100% 100% 0;
   background-color: #000000;
   background-position: -2px -3px;
@@ -321,7 +321,7 @@ the installer will append this file to the app vendored assets here: 'vendor/ass
   position: absolute;
   bottom: 26px;
   left: 0;
-  opacity: 0.3;
+  opacity: 0.4;
   border-radius: 0 100% 100% 0;
   background-color: #000000;
   background-position: -2px -3px;
