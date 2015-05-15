@@ -4,10 +4,10 @@
     <%= f.text_field :nutrition_name, :readonly => true%>
   </td>
   <td class='value'>
-    <%= f.text_field :quantity, type: "number"%>
+    <%= f.text_field :quantity, type: "number", :step => "any" %>
   </td>
   <td class='value'>
-    <%= f.collection_select(:unit, @units, :to_s, :to_s, { :include_blank => false }, { :class => 'select2 fullwidth', :required => true}) %>
+    <%= f.collection_select(:unit, @units, :to_s, :to_s, { :include_blank => false }, { :class => 'select2 fullwidth', :required => false}) %>
   </td>
   <td class="actions">
     <% if f.object.persisted? %>

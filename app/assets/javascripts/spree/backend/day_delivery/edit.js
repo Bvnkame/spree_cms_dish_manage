@@ -300,7 +300,7 @@ function DishItemFormat(id, typeid, dishid, imgUrl, name)
   var dishType = getDishType(typeid);
 
   var html = "\
-    <div class='dish draggable drag-drop docked " + dishType + "' data-id='" + id + "' data-dishid='" + dishid + "'>\
+    <div class='dish draggable drag-drop docked' data-id='" + id + "' data-dishid='" + dishid + "'>\
       <div class='index'>\
         <p></p>\
       </div>\
@@ -311,6 +311,7 @@ function DishItemFormat(id, typeid, dishid, imgUrl, name)
         <img class='image-dish' src='" + imgUrl + "'>\
       </div>\
       <p  title='" + name + "' class='name'>" + name + "</p>\
+      <div class='dish-type " + dishType + "'> </div>\
     </div>\
   ";
 

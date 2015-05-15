@@ -136,7 +136,7 @@ the installer will append this file to the app vendored assets here: 'vendor/ass
 {
   display: block;
 }
-
+  
 .close-button:hover
 {
   background: red;
@@ -256,23 +256,6 @@ the installer will append this file to the app vendored assets here: 'vendor/ass
     margin-top: 6px;
   }
 
-    .dish-select-item .img.main-dish
-    {
-      border: rgb(80, 55, 214) solid 2px;
-    }
-
-    .dish-select-item .img.soup
-    {
-      border-radius: 50%;
-      border: 2px solid rgb(77, 161, 0);
-    }
-
-    .dish-select-item .img.vegetable
-    {
-      border-radius: 30%;
-      border: 2px solid rgb(136, 50, 6);
-    }
-
   .dish-select-item .name
   {
     white-space: nowrap;
@@ -306,3 +289,33 @@ the installer will append this file to the app vendored assets here: 'vendor/ass
     position: relative;
   }
   
+.dish-type
+{
+  height: 44px;
+  width: 45px;
+  position: absolute;
+  bottom: 42px;
+  opacity: 0.4;
+  border-radius: 0 100% 100% 0;
+  background-color: #000000;
+  background-position: -2px -3px;
+  background-size: 48px;
+}
+
+.main-dish
+{
+  background-color: #AA3E00;
+  background-image: url("/assets/dish/maindish-white.png");
+}
+
+.soup
+{
+  background-color: #0089AA;
+  background-image: url("/assets/dish/soup-white.png");
+}
+
+.vegetable
+{
+  background-color: #00AA35;
+  background-image: url("/assets/dish/veget-white.png");
+}

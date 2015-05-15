@@ -105,7 +105,7 @@ function addNewDish(objectDishContainer, dish)
   var dishType = getDishType(dish.dish_type_id);
 
   var html = "\
-    <div class='dish draggable drag-drop docked " + dishType + "' data-id='" + id + "'>\
+    <div class='dish draggable drag-drop docked' data-id='" + id + "'>\
       <div class='index'>\
         <p>1</p>\
       </div>\
@@ -116,6 +116,7 @@ function addNewDish(objectDishContainer, dish)
         <img class='image-dish' src='" + imgUrl + "'>\
       </div>\
       <p title='" + dish.name + "' class='name'>" + dish.name + "</p>\
+      <div class='dish-type " + dishType + "'> </div>\
     </div>\
   ";
 
